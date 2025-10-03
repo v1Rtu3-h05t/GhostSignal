@@ -1,6 +1,6 @@
 !/bin/bash
 
-# ─── VISUAL ILLUSION LAYER ───
+# ─── VISUAL ILLUSIONS LAYER ───
 figlet "GhostSignal v1.0"
 echo "Initializing exploit..."
 sleep 2
